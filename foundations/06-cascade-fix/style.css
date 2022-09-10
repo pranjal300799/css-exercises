@@ -8,28 +8,46 @@ body{
   font-weight: 800;
 }
 
+.para 
+ {
+  font-size: 22px;
+}  
 .small-para {
   font-size: 14px;
   font-weight: 800;
 }
+/*not a descendant so no point of inheritance ,
+   class selectors so a tie,at last whichever is written last wins*/
 
-.para {
-  font-size: 22px;
-}
-
-.confirm {
-  background: green;
-  color: white;
-  font-weight: bold;
-} 
-
+  .button.confirm {
+    background: green;
+    color: white;
+    font-weight: bold;
+    
+  } 
 .button {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   font-size: 20px;
 }
 
-.child {
+/* soln 1------------>
+
+alternate way to switch order of .button and .confirm
+soln 2 ----->
+
+changed .button to .cancel to target specifically but then
+.confirm has no font-size so added it from my side
+
+soln 3 -------->
+added #cancel-button to .button to specificy targetting and added the font size in .confirm block
+
+soln 4------------->
+made .confirm to .button.confirm to beat .confirm  due to sheer no. of more class
+and since there is no font size opposition font size according to .button will get applied
+*/
+
+div.text.child {
   color: rgb(0, 0, 0);
   font-weight: 800;
   font-size: 14px;
@@ -40,3 +58,22 @@ div.text {
   font-size: 22px;
   font-weight: 100;
 }
+
+/*
+soln had to increase the no. of selectors in .child to help it prevent being overriden by 
+.text
+
+div.child {
+  color: rgb(0, 0, 0);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+div.text {
+  color: rgb(0, 0, 0);
+  font-size: 22px;
+  font-weight: 100;
+}
+ doesnt work cause div.text and div.child still have the same precedence
+ due to same type of selectors but every div has text class and  as div.text
+ comes below div .child so it is overriden   
